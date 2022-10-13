@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import Link from "next/link";
-import Header from "../components/Header";
+import Header from "../components/Navbar/Header";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
       <main>
         <Header />
         <div className={styles.next}>
-          <h1>Welcome NEXT Blog</h1>
+          <h1 className={styles.title}>Welcome NEXT Blog</h1>
           <p>
             이 서비스는 저의 개발 실력 향상을 위해 만든 블로그입니다.
             <br />

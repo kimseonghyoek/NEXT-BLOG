@@ -22,7 +22,15 @@ html {
   font-size: 62.5%;
 }
 
+@media all and (min-width: 2000px) {
+  html { font-size: 100%;}
+}
+
 	
 @media all and (max-width: 750px) {
-  html { font-size: 50%; } // 이제 문서 내 모든 rem 단위가 영향을 받습니다.
+  html { font-size: 50%; }
+}
+
+@media all and (max-width: 375px) {
+  html { font-size: 40%;}
 }

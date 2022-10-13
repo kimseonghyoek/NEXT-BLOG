@@ -30,5 +30,20 @@
 @media all and (max-width: 540px) {
   .next {
     padding: 4rem;
+    p {
+      padding: 0.5rem;
+      margin-top: 9rem;
+      border-radius: 8px;
+      background-color: rgba($color: #c8c8c8, $alpha: 0.4);
+    }
+  }
+}
+
+@media all and (max-width: 375px) {
+  .next {
+    font-size: 2.7rem;
+    .title {
+      font-size: 4.5rem;
+    }
   }
 }
