@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+  font-size: 62.5%;
+}
+
+	
+@media all and (max-width: 750px) {
+  html { font-size: 50%; } // 이제 문서 내 모든 rem 단위가 영향을 받습니다.
+}
