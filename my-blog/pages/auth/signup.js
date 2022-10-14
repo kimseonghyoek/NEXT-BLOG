@@ -1,10 +1,11 @@
 import React from "react"
+import LoginForm from "../../components/LoginForm";
 import styles from '../../styles/Signup.module.scss'
 
 const Signup = () => {
   return (
-    <div>
-      <h1 className={styles.tester}>This is Signup Page</h1>
+    <div className={styles.signup}>
+      <LoginForm/>
     </div>
   )
 }

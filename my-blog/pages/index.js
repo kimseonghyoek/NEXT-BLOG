@@ -21,9 +21,9 @@ export default function Home() {
             <br />
             현재 아직 개발 중이나 마스터 피스 급으로 만드는 중이니 기대바랍니다.
           </p>
-          <button>
-            <Link href="/auth/signup">SIGN UP</Link>
-          </button>
+          <Link href="/auth/signup">
+            <button>SIGN UP</button>
+          </Link>
         </div>
       </main>
     </div>
