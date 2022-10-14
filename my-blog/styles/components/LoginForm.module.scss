@@ -1,0 +1,139 @@
+.loginForm {
+  background-color: #eef1ff;
+  width: 52rem;
+  padding: 3rem;
+  border-radius: 10px;
+  display: inline-block;
+
+  h1 {
+    padding: 1rem 2rem 1rem 2rem;
+    font-size: 3rem;
+  }
+
+  input {
+    margin: 1.4rem;
+    padding: 1.2rem;
+    font-family: "Gowun Dodum", sans-serif;
+    font-size: 1.5rem;
+    width: 94%;
+    border: 1px solid #ffe449;
+    border-radius: 10px;
+  }
+  
+  button {
+    width: 27rem;
+    height: 5rem;
+    border-radius: 10px;
+    background-color: #ffe449;
+    border: none;
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 1.2rem;
+  }
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rowBox {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+
+  input {
+    margin: 1.4rem;
+    padding: 1rem;
+    font-family: "Gowun Dodum", sans-serif;
+    font-size: 1.5rem;
+    width: 50%;
+    border: 1px solid #ffe449;
+    border-radius: 10px;
+  }
+}
+
+.check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    display: inline-block;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin: 1rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+    vertical-align: middle;
+  }
+}
+
+@media all and (max-width: 375px) {
+  .loginForm {
+    // padding: 5rem;
+  }
+
+  .check {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+    p {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  }
+}
+
+@media all and (max-width: 750px) {
+  .loginForm {
+    margin: 3rem;
+
+    .rowBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contents {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    
+    }
+
+    input {
+      width: 90%;
+      height: 6.5rem;
+    }
+  }
+
+  .check {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+    input {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin: 1rem;
+    }
+  
+    p {
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+  }
+}
