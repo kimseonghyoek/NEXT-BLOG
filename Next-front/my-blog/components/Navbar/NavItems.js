@@ -12,5 +12,10 @@ export const NavItem = [
   {
     name: "About",
     link: "#"
+  },
+
+  {
+    name: "Account",
+    link: "#"
   }
 ]

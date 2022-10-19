@@ -13,7 +13,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Header />
         <div className={styles.next}>
           <h1 className={styles.title}>Welcome NEXT Blog</h1>
           <p>

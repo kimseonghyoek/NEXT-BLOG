@@ -3,7 +3,7 @@
   font-size: 3rem;
   justify-content: center;
   color: white;
-  padding: 6rem 7rem 6rem 7rem;
+  padding: 16rem 7rem 6rem 7rem;
   flex-direction: column;
 
   button {
@@ -29,7 +29,7 @@
 
 @media all and (max-width: 540px) {
   .next {
-    padding: 4rem;
+    padding: 10rem 4rem 4rem 4rem;
     p {
       padding: 0.5rem;
       margin-top: 9rem;
