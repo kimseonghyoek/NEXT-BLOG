@@ -1,29 +1,16 @@
 import React from "react";
 import styles from "../../styles/Setting.module.scss";
 import Header from "../../components/Navbar/Header";
-import Image from 'next/image'
+import Image from "next/image";
+import SelectSet from "../../components/Setting/SelectSet";
+import Profile from "../../components/Setting/Profile";
 
 const Setting = () => {
   return (
     <div className={styles.set}>
       <Header />
       <div className={styles.row_set}>
-        <div className={styles.setting_set}>
-          <span>
-            <h1>Setting</h1>
-            <p>계정을 설정 및 변경합니다.</p>
-          </span>
-          <div>
-            <ul>
-              <li>
-                <p>Personal</p>
-              </li>
-              <li>
-                <p>Account</p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <SelectSet />
 
         <div className={styles.mainContent}>
           <span>
@@ -48,19 +35,13 @@ const Setting = () => {
               <label>내 커리어</label>
               <input placeholder="" />
             </div>
+            <div className={styles.inputs}>
+              <label>성별</label>
+              <input placeholder="" />
+            </div>
           </div>
         </div>
-
-        <div className={styles.profile}>
-          <span>
-            <h1>My Profile Image</h1>
-            <p>자신의 프로필 사진을 설정할 수 있어요</p>
-          </span>
-          <div className={styles.image}>
-            <Image src="/guest.png" alt="" width={220} height={220}/>
-          </div>
-          <button>Edit Your Profile Image</button>
-        </div>
+        <Profile/>
       </div>
     </div>
   );

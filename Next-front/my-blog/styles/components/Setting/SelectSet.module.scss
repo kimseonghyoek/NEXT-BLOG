@@ -1,0 +1,28 @@
+.setting_set {
+  margin: 0rem 2rem 0rem 2rem;
+  width: 40rem;
+  height: fit-content;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 0 rgba(133, 133, 133, 0.2),
+    0 4px 14px 0 rgba(116, 116, 116, 0.19);
+  background-color: white;
+
+  ul {
+    padding-left: 2rem;
+  }
+
+  li {
+    list-style: none;
+    font-size: 1.8rem;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+
+    p {
+      margin: 0%;
+    }
+  }
+
+  li:hover {
+    background-color: #f0f0f0;
+  }
+}

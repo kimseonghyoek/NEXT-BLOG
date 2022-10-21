@@ -29,38 +29,9 @@
   flex-direction: row;
 }
 
-.setting_set {
-  margin: 0rem 2rem 0rem 2rem;
-  width: 40rem;
-  height: fit-content;
-  padding: 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0 1px 1px 0 rgba(133, 133, 133, 0.2),
-    0 4px 14px 0 rgba(116, 116, 116, 0.19);
-  background-color: white;
-
-  ul {
-    padding-left: 2rem;
-  }
-
-  li {
-    list-style: none;
-    font-size: 1.8rem;
-    padding: 1.5rem 2rem 1.5rem 2rem;
-
-    p {
-      margin: 0%;
-    }
-  }
-
-  li:hover {
-    background-color: #f0f0f0;
-  }
-}
-
 .mainContent {
   margin: 0rem 2rem 0rem 2rem;
-  width: 75rem;
+  width: 60rem;
   background-color: white;
   box-shadow: 0 1px 1px 0 rgba(133, 133, 133, 0.2),
     0 4px 14px 0 rgba(116, 116, 116, 0.19);
@@ -82,7 +53,7 @@
   }
 
   .forms {
-    margin: 4.5rem;
+    margin: 2.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,43 +61,20 @@
   }
 
   .inputs {
-    width: 80%;
+    width: 90%;
     justify-content: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+
+    label {
+      width: 14rem;
+      text-align: end;
+      padding: 0rem 2rem 0rem 2rem;
+    }
 
     input {
       justify-content: center;
     }
-  }
-}
-
-.profile {
-  margin: 0rem 2rem 0rem 2rem;
-  padding: 2.5rem;
-  width: 40rem;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  box-shadow: 0 1px 1px 0 rgba(133, 133, 133, 0.2),
-  0 4px 14px 0 rgba(116, 116, 116, 0.19);
-
-  .image {
-    padding: 5rem;
-    width: 100%;
-    justify-content: center;
-    display: flex;
-  }
-
-  button {
-    height: 5rem;
-    border-radius: 10px;
-    border: none;
-    font-family: "Gowun Dodum", sans-serif;
-    font-weight: bold;
-    background-color: #AAC4FF;
-    color: white;
-    font-size: 1.8rem;
   }
 }
