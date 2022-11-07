@@ -1,14 +1,14 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 
-@Controller('auth/signup/test')
+@Controller('auth')
 export class AuthController {
   @Get()
   auth() {
-    return console.log('asdfadsfasdf');
+    return 'This is Auth Page';
   }
 
   @Post()
-  post() {
-    return console.log('esatt');
+  create(@Body() userId: number) {
+    return console.log('데이터 들어옴');
   }
 }
