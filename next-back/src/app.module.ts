@@ -1,22 +1,26 @@
 import { Module } from '@nestjs/common';
-import { MoviesModule } from './movies/movies.module';
 import { AppController } from './app.controller';
 import { App } from './app';
-import { AuthController } from './auth/auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
+import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      username: 'root',
-      password: 'sad123',
       host: 'localhost',
       port: 3308,
+      username: 'root',
+      password: 'sad123',
       database: 'NEXTB',
+      entities: [User],
+      synchronize: true,
     }),
-    MoviesModule,
+    TypeOrmModule.forFeature([User]),
+    AuthModule,
   ],
   controllers: [AppController, AuthController],
   providers: [App, AuthService],

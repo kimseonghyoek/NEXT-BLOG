@@ -1,14 +1,19 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Body, Controller } from '@nestjs/common';
+import { Get, Post } from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('auth')
 export class AuthController {
+  constructor(private readonly authService: AuthService) {}
+
   @Get()
-  auth() {
-    return 'This is Auth Page';
+  test() {
+    return 'test!!!';
   }
 
   @Post()
-  create(@Body() userId: number) {
-    return console.log('데이터 들어옴');
+  post(@Body() dto) {
+    return console.log(dto);
   }
 }
