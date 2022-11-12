@@ -6,6 +6,14 @@ const nextConfig = {
   swcMinify: true,
   sassOptions: {
     includePath: [path.join(__dirname + 'styles')]
+  },
+  rewrites() {
+    return [
+      {
+        source: `/:path*`,
+        destination: `http://localhost:8000/:path*`
+      }
+    ]
   }
 }
 

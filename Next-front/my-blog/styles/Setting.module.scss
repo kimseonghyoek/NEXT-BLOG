@@ -29,6 +29,13 @@
   flex-direction: row;
 }
 
+@media all and (max-width: 540px) {
+  .row_set {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .mainContent {
   margin: 0rem 2rem 0rem 2rem;
   width: 60rem;
