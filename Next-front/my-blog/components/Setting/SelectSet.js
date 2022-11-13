@@ -1,20 +1,22 @@
 import React from 'react';
+import { SelectItems } from './SelectItems';
 import styles from '../../styles/components/Setting/SelectSet.module.scss'
 
 const SelectSet = () => {
   return (
     <div className={styles.setting_set}>
     <span>
-      <h1>Settings</h1>
+      <h1>User Profile</h1>
     </span>
     <div>
       <ul>
-        <li>
-          <p>Personal</p>
-        </li>
-        <li>
-          <p>Account</p>
-        </li>
+      {
+        SelectItems.map((item, map) => {
+          return (
+            <li><a>{item.name}</a></li>
+          )
+        })
+      }
       </ul>
     </div>
   </div>

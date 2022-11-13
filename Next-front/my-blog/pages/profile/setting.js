@@ -41,7 +41,6 @@ const Setting = () => {
             </div>
           </div>
         </div>
-        <Profile/>
       </div>
     </div>
   );
