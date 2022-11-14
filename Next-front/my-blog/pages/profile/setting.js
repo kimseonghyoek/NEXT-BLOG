@@ -3,7 +3,6 @@ import styles from "../../styles/Setting.module.scss";
 import Header from "../../components/Navbar/Header";
 import Image from "next/image";
 import SelectSet from "../../components/Setting/SelectSet";
-import Profile from "../../components/Setting/Profile";
 
 const Setting = () => {
   return (

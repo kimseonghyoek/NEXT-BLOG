@@ -11,9 +11,9 @@ const SelectSet = () => {
     <div>
       <ul>
       {
-        SelectItems.map((item, map) => {
+        SelectItems.map((item, map, key) => {
           return (
-            <li><a>{item.name}</a></li>
+            <li  key={key}><a>{item.name}</a></li>
           )
         })
       }
