@@ -26,6 +26,14 @@ html {
   font-size: 62.5%;
 }
 
+input {
+  border-radius: 0.5rem;
+  border: 1px solid #BCBDBF;
+  font-family: "Gowun Dodum", sans-serif;
+  margin: 1.4rem;
+  padding: 1rem;
+}
+
 @media all and (min-width: 2000px) {
   html { font-size: 100%;}
 }
