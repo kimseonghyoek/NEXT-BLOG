@@ -3,6 +3,10 @@
   flex-direction: column;
   align-items: center;
 
+  h1 {
+    padding: 0.5rem;
+  }
+
   .my_info {
     display: flex;
     flex-direction: row;
@@ -22,15 +26,6 @@
     justify-content: center;
     align-items: center;
     padding: 5rem;
-
-    input {
-      margin: 1.4rem;
-      padding: 1rem;
-      font-family: "Gowun Dodum", sans-serif;
-      font-size: 1.5rem;
-      width: 50%;
-      border-radius: 10px;
-    }
   }
 
   .profile_form {
@@ -51,10 +46,15 @@
       flex-direction: column;
 
       p {
-        padding-left: 0.2rem;
-        font-size: 1.6rem;
-        margin: 0.2rem 0 0.2rem 0;
+        font-size: 1.5rem;
       }
+
+      input {
+        width: 23rem;
+      }
+      // @media all and  (max-width: 540px) {
+        
+      // }
     }
   }
 }
