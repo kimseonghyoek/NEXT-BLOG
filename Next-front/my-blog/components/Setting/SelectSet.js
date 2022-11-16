@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SelectItems } from './SelectItems';
 import styles from '../../styles/components/Setting/SelectSet.module.scss'
 
 const SelectSet = () => {
+
+  const [item_state, setItemState] = useState('User Profiles');
+
   return (
     <div className={styles.setting_set}>
     <span>
-      <h1>User Profile</h1>
+      <h1>{item_state}</h1>
     </span>
     <div>
       <ul>

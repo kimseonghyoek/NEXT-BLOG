@@ -27,3 +27,12 @@
     background-color: #f0f0f0;
   }
 }
+
+@media all and (max-width: 540px) {
+  .setting_set {
+    
+    span {
+      display: none;
+    }
+  }
+}
