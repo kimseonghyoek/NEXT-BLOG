@@ -1,12 +1,14 @@
 export const SelectItems = [
     {
-      name: "User Info"
-      
+      name: "User Info",
+      key: 1,
     },
     {
-      name: "Setting"
+      name: "Setting",
+      key: 2,
     },
     {
-      name: "Like Post"
+      name: "Like Post",
+      key: 3
     }
 ]

@@ -1,29 +1,47 @@
-import React, { useState } from 'react';
-import { SelectItems } from './SelectItems';
-import styles from '../../styles/components/Setting/SelectSet.module.scss'
+import React, { useState } from "react";
+import { SelectItems } from "./SelectItems";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import styles from "../../styles/components/Setting/SelectSet.module.scss";
 
 const SelectSet = () => {
+  const [item_state, setItemState] = useState(false);
 
-  const [item_state, setItemState] = useState('User Profiles');
+  const onShowItem = () => {
+    item_state ? setItemState(false) : setItemState(true);
+    console.log(item_state);
+  };
 
   return (
     <div className={styles.setting_set}>
-    <span>
-      <h1>{item_state}</h1>
-    </span>
-    <div>
-      <ul>
-      {
-        SelectItems.map((item, map, key) => {
-          return (
-            <li  key={key}><a>{item.name}</a></li>
-          )
-        })
-      }
-      </ul>
+      <span>
+        <div className={styles.row}>
+          <button>
+            <FontAwesomeIcon className={styles.icon} icon={faAngleLeft} />
+          </button>
+          <h1>User Profiles</h1>
+        </div>
+        <button onClick={onShowItem}>
+          <FontAwesomeIcon className={styles.icon} icon={faAngleDown} />
+        </button>
+      </span>
+      <div>
+        <ul>
+          {item_state
+            ? SelectItems.map((item) => {
+                return (
+                  <div className={styles.items}>
+                    <li key={item.key}>
+                      <a>{item.name}</a>
+                    </li>
+                  </div>
+                );
+              })
+            : null}
+        </ul>
+      </div>
     </div>
-  </div>
   );
-}
+};
 
-export default SelectSet
+export default SelectSet;
