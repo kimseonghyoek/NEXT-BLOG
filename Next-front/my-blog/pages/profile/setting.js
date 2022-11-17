@@ -8,10 +8,8 @@ import UserInfo from "../../containers/setting/UserInfo";
 const Setting = () => {
   return (
     <div className={styles.set}>
-      <Header />
       <div className={styles.row_set}>
         <SelectSet />
-
         <div className={styles.mainContent}>
           <UserInfo/>
         </div>

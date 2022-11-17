@@ -29,19 +29,14 @@
   flex-direction: row;
 }
 
-@media all and (max-width: 540px) {
-  .row_set {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 .mainContent {
+  display: flex;
+  justify-content: center;
   margin: 0rem 2rem 0rem 2rem;
   width: 60rem;
   background-color: white;
-  box-shadow: 0 1px 1px 0 rgba(133, 133, 133, 0.2),
-    0 4px 14px 0 rgba(116, 116, 116, 0.19);
+  // box-shadow: 0 1px 1px 0 rgba(133, 133, 133, 0.2),
+  //   0 4px 14px 0 rgba(116, 116, 116, 0.19);
   padding: 2.5rem;
   border-radius: 10px;
 
@@ -74,5 +69,22 @@
     input {
       justify-content: center;
     }
+  }
+}
+
+@media all and (max-width: 840px) {
+  .row_set {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mainContent {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 }
