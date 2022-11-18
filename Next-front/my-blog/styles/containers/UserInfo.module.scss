@@ -58,14 +58,40 @@
       input {
         width: 23rem;
       }
-      // @media all and  (max-width: 540px) {
-
-      // }
     }
   }
 }
 
-@media all and (max-width: 840px) {
+@media all and (max-width: 430px) {
+  .user_info {
+    width: 100%;
+
+    .profile_form {
+      width: 75%;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;  
+      }
+
+      .half_wrap {
+        padding: 0%;
+      }
+      .inputs {
+        p {
+          font-size: 1.4rem;
+        }
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 431px) {
   .user_info {
     width: 100%;
 
