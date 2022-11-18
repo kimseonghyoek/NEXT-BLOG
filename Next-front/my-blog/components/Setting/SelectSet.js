@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SelectItems } from "./SelectItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { Desktop, Tablet } from '../../components/useResponsive';
 import styles from "../../styles/components/Setting/SelectSet.module.scss";
 
 const SelectSet = () => {
@@ -27,6 +28,7 @@ const SelectSet = () => {
       </span>
       <div>
         <ul>
+          <Tablet>
           {item_state
             ? SelectItems.map((item) => {
                 return (
@@ -38,6 +40,20 @@ const SelectSet = () => {
                 );
               })
             : null}
+          </Tablet>
+          <Desktop>
+           {
+            SelectItems.map((item) => {
+              return (
+                <div className={styles.items}>
+                  <li key={item.key}>
+                    <a>{item.name}</a>
+                  </li>
+                </div>
+              );
+            })
+           }
+          </Desktop>
         </ul>
       </div>
     </div>
