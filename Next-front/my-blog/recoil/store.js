@@ -20,3 +20,8 @@ export const pw = atom({
   default: ''
 });
 
+export const setting_item = atom({
+  key: 'setting_item',
+  default: 0,
+})
+
