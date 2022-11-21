@@ -22,6 +22,10 @@ export const pw = atom({
 
 export const setting_item = atom({
   key: 'setting_item',
-  default: 0,
+  default: 'User Info',
 })
 
+export const show_item = atom({
+  key: 'show_item',
+  default: true,
+})
