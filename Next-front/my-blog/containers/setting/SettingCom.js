@@ -5,8 +5,8 @@ import DelAccount from "../DelAccount";
 
 const SettingCom = () => {
   return (
-    <div>
-      <h1>Setting</h1>
+    <div className={styles.settingCom}>
+      <h1 className={styles.title}>Setting</h1>
       <div className={styles.contents}>
         <h2>Display Setting</h2>
         <div>

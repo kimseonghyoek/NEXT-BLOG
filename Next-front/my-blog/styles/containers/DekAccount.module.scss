@@ -1,23 +1,54 @@
-.tags {
-  font-size: 1.7rem;
-}
+.del_account {
+  .tags {
+    font-size: 1.7rem;
+  }
+  
+  .del_btn {
+    background-color: #e65751;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    border: none;
+    width: 10rem;
+    border-radius: 5%;
+    color: white;
+  }
+  
+  .nom_btn {
+    background-color: #aef35a;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    border: none;
+    width: 10rem;
+    border-radius: 5%;
+    color: black;
+  }
+  
+  .notice_text {
+    font-size: 1.4rem;
+  }
 
-.del_btn {
-  background-color: #e65751;
-  padding: 1.5rem;
-  margin: 1.5rem;
-  border: none;
-  width: 10rem;
-  border-radius: 5%;
-  color: white;
-}
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.nom_btn {
-  background-color: #aef35a;
-  padding: 1.5rem;
-  margin: 1.5rem;
-  border: none;
-  width: 10rem;
-  border-radius: 5%;
-  color: black;
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    input {
+      width: 38rem;
+      text-align: center;
+    }
+
+    button {
+      font-family: 'Gowun Dodum', sans-serif;
+      margin: 1rem;
+      padding: 1rem;
+      width: 10rem;
+      border: none;
+      background-color: #aef35a;
+      border-radius: 10px;
+    }
+  }
 }
