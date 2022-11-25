@@ -48,7 +48,24 @@
       width: 10rem;
       border: none;
       background-color: #aef35a;
-      border-radius: 10px;
+      border-radius: 5%;
+      font-weight: bold;
+    }
+  }
+
+  .forms {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media all and (max-width: 840px) {
+  .del_account {
+    .forms {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
