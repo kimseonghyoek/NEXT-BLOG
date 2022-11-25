@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import SettingCom from '../../containers/setting/SettingCom';
 import UserInfo from '../../containers/setting/UserInfo';
 import { setting_item } from '../../recoil/store'; 
-import LikePost from './LikePost';
+import LikePost from '../../containers/setting/LikePost';
 
 const MainContent = () => {
   
