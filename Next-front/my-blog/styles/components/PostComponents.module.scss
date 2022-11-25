@@ -1,0 +1,18 @@
+.post {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+
+  h2 {
+    font-size: 1.6rem;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin: 0;
+    text-align: right;
+  }
+}

@@ -1,0 +1,15 @@
+.like_post {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    padding: 0.5rem;
+    text-align: center;
+  }
+}
+
+.post_list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
