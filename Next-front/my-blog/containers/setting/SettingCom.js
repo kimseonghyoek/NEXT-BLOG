@@ -16,7 +16,7 @@ const SettingCom = () => {
         <div>
           <h2>Account Setting</h2>
           <div>
-            <DelAccount />
+            <DelAccount mail="admin@test.com"/>
           </div>
         </div>
       </div>

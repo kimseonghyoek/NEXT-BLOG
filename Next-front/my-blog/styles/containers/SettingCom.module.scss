@@ -1,4 +1,5 @@
 .settingCom {
+  width: 100vm;
   .title {
     padding: 0.5rem;
     text-align: center;
@@ -23,5 +24,13 @@
   
   .contents {
     width: 100%;
+  }
+}
+
+@media all and (max-width: 840px) {
+  .settingCom {
+    .contents {
+      width: 38rem;
+    }
   }
 }
