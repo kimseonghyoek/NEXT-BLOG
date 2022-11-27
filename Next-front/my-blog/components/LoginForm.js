@@ -85,18 +85,21 @@ const LoginForm = () => {
     }
 
     if (post === true) {
-      alert(post)
       axios
         .post(`http://localhost:8000/auth`, {
           body: {
             email: userEmail,
             birth: userBirth,
-            name: userName,
+            nickname: userName,
             pw: userPw,
           },
         })
         .then((res) => {
           console.log(res);
+          alert('회원가입이 완료 되었습니다.')
+          if(res.data.msg === "입력하신 이메일이 존재합니다.") {
+            alert(res.data.msg);
+          }
         }).catch((err) => {
           console.log(err);
         })
