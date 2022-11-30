@@ -20,6 +20,21 @@ export const pw = atom({
   default: ''
 });
 
+export const phone_num = atom({
+  key: 'pw',
+  default: ''
+});
+
+export const bio = atom({
+  key: 'bio',
+  default: '🖐️ Hi, There!!'
+});
+
+export const location = atom({
+  key: 'location',
+  default: ''
+})
+
 export const setting_item = atom({
   key: 'setting_item',
   default: 'User Info',
