@@ -53,6 +53,23 @@ const LoginForm = () => {
     }
   };
 
+  const Login = (e) => {
+    e.preventDefault();
+
+    if (userEmail === "") {
+      alert("이메일이 빈 칸 입니다.");
+      post = false;
+    }
+
+    if (userPw === "") {
+      alert("비밀번호가 빈 칸 입니다.");
+      post = false;
+    }
+
+    alert('로그인');
+    
+  }
+
   const submit = (e) => {
     e.preventDefault();
 
@@ -96,10 +113,6 @@ const LoginForm = () => {
         })
         .then((res) => {
           console.log(res);
-          alert('회원가입이 완료 되었습니다.')
-          if(res.data.msg === "입력하신 이메일이 존재합니다.") {
-            alert(res.data.msg);
-          }
         }).catch((err) => {
           console.log(err);
         })
@@ -108,7 +121,7 @@ const LoginForm = () => {
 
   return (
     <div className={styles.loginForm}>
-      <form onSubmit={submit}>
+      <form onSubmit={path === "/auth/signup" ? submit : Login}>
         {path === "/auth/signup" ? <h1>Sign up</h1> : <h1>Login</h1>}
         <div className={styles.contents}>
           {path === "/auth/signup" ? (
@@ -153,7 +166,7 @@ const LoginForm = () => {
           {path === "/auth/signin" ? (
             <button>Sign in</button>
           ) : (
-            <button disabled={!checked} onSubmit={submit}>
+            <button disabled={!checked}>
               Sign up
             </button>
           )}
