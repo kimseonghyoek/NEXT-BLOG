@@ -70,6 +70,17 @@ const LoginForm = () => {
     
   }
 
+  // 이메일 중복 체크
+  const checkDuplicateCheck = () => {
+    e.preventDefault();
+
+    if(userEmail === '') {
+      alert("이메일이 빈 칸 입니다.");
+    } else {
+      // axios get
+    }
+  }
+
   const submit = (e) => {
     e.preventDefault();
 
@@ -103,7 +114,7 @@ const LoginForm = () => {
 
     if (post === true) {
       axios
-        .post(`http://localhost:8000/auth`, {
+        .post(`http://localhost:8000/auth/signup`, {
           body: {
             email: userEmail,
             birth: userBirth,

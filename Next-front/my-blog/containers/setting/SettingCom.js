@@ -1,5 +1,5 @@
 import React from "react";
-import ToggleBar from "../../components/DefaultComponents/ToggleBar";
+import ToggleBar from "../../components/common/ToggleBar";
 import styles from "../../styles/containers/SettingCom.module.scss";
 import DelAccount from "../DelAccount";
 

@@ -33,6 +33,10 @@ input {
   padding: 1rem;
 }
 
+input:focus {
+  outline: none;
+}
+
 @media all and (min-width: 2000px) {
   html { font-size: 100%;}
 }

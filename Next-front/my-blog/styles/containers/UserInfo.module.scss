@@ -60,6 +60,17 @@
       }
     }
   }
+
+  button {
+    margin: 1.5rem;
+    width: 25rem;
+    height: 5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffe449;
+    font-family: "Gowun Dodum", sans-serif;
+    font-weight: bold;
+  }
 }
 
 @media all and (max-width: 430px) {
