@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
-import e, { response } from 'express';
+import e, { Response, response } from 'express';
 import { UnauthorizedException } from '@nestjs/common/exceptions';
 // import { CreateUserDto } from './dto/create-user.dto';
 
@@ -13,10 +13,11 @@ export class AuthService {
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
-  public async checkEmail(body) {
+  public async checkEmail(email) {
     const user = await this.userRepository.findOne({
-      where: { email: body },
+      where: { email: email },
     });
+    console.log(`==========${user}==========`);
     return user;
   }
 
@@ -34,13 +35,6 @@ export class AuthService {
     const password = body.body.pw;
     const salt = 12;
     user.pw = await bcrypt.hash(password, salt);
-    const checkEmail = await this.checkEmail(body.body.email);
-    if (checkEmail === null) {
-      console.log('none user');
-      await this.userRepository.save(user);
-    } else {
-      console.log('이메일 있음');
-      throw new UnauthorizedException('Email in use');
-    }
+    await this.userRepository.save(user);
   }
 }

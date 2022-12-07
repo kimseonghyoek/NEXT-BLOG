@@ -1,5 +1,6 @@
-import { Body, Controller } from '@nestjs/common';
+import { Body, Controller, Res } from '@nestjs/common';
 import { Get, Post } from '@nestjs/common';
+import { Response } from 'express';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -20,7 +21,15 @@ export class AuthController {
   }
 
   @Post('/signup')
-  post(@Body() data) {
-    this.authService.signUp(data);
+  async signup(@Body() data, @Res() res: Response) {
+    console.log(`---${data.body.email}---`);
+    const user = await this.authService.checkEmail(data.body.email);
+    console.log(user);
+    if (user === null) {
+      this.authService.signUp(data);
+      return res.status(200).send('save_user');
+    } else {
+      return res.status(403).send('have_user');
+    }
   }
 }
