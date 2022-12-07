@@ -5,6 +5,7 @@ import Social from "./Social";
 import { useRecoilState } from "recoil";
 import { birth, nickname, email, pw } from "../recoil/store";
 import axios from "axios";
+import InputCheck from "./InputCheck";
 
 const LoginForm = () => {
   const location = useRouter();
@@ -42,7 +43,7 @@ const LoginForm = () => {
   const onChangerePw = (e) => {
     e.preventDefault();
     setRePw(e.target.value);
-  }
+  };
 
   const onCheck = () => {
     if (!checked) {
@@ -66,20 +67,30 @@ const LoginForm = () => {
       post = false;
     }
 
-    alert('로그인');
-    
-  }
+    alert("로그인");
+  };
 
   // 이메일 중복 체크
-  const checkDuplicateCheck = () => {
+  const checkDuplicateCheck = (e) => {
     e.preventDefault();
 
-    if(userEmail === '') {
-      alert("이메일이 빈 칸 입니다.");
-    } else {
-      // axios get
+    alert("이메일 체크");
+
+    if (userEmail === "") {
+      return alert("이메일이 빈 칸 입니다.");
     }
-  }
+
+    axios({
+      url: "localhost:8000/auth/email-check",
+      method: "get",
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const submit = (e) => {
     e.preventDefault();
@@ -98,8 +109,8 @@ const LoginForm = () => {
       post = false;
       alert("생일이 빈 칸 입니다.");
     } else if (userBirth.length < 1 || userBirth.length >= 9) {
-      post = false
-      alert("날짜 형식이 잘 못 되었습니다.")
+      post = false;
+      alert("날짜 형식이 잘 못 되었습니다.");
     }
 
     if (pw === "") {
@@ -121,12 +132,17 @@ const LoginForm = () => {
             nickname: userName,
             pw: userPw,
           },
-        })
+        })  
         .then((res) => {
-          console.log(res);
-        }).catch((err) => {
-          console.log(err);
+          if(res.status === 200) {
+            alert('계정 가입이 완료 되었습니다.')
+          }
         })
+        .catch((err) => {
+          if(err.response.data === 'have_user') {
+            alert('실패')
+          }
+        });
     }
   };
 
@@ -147,14 +163,21 @@ const LoginForm = () => {
               </div>
             </>
           ) : null}
-          <input placeholder="Your Email" onChange={onChangeEmail} />
+          <div className={styles.emails}>
+            <input placeholder="Your Email" onChange={onChangeEmail} />
+            {<InputCheck notice={`이미 사용중인 이메일입니다.`} />}
+          </div>
           <input
             placeholder="Your Password"
             type="password"
             onChange={onChangePw}
           />
           {path === "/auth/signup" ? (
-            <input placeholder="Confirm Password" type="password" onChange={onChangerePw}/>
+            <input
+              placeholder="Confirm Password"
+              type="password"
+              onChange={onChangerePw}
+            />
           ) : null}
           {path === "/auth/signup" ? (
             <div className={styles.check}>
@@ -177,9 +200,9 @@ const LoginForm = () => {
           {path === "/auth/signin" ? (
             <button>Sign in</button>
           ) : (
-            <button disabled={!checked}>
-              Sign up
-            </button>
+            <div className={styles.buttons}>
+              <button disabled={!checked}>Sign up</button>
+            </div>
           )}
         </div>
       </form>
