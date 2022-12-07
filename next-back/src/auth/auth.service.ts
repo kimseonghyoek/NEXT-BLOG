@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Res } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
@@ -18,6 +18,10 @@ export class AuthService {
       where: { email: body },
     });
     return user;
+  }
+
+  public async findAll() {
+    return await this.userRepository.find();
   }
 
   // 나중에 타입 지정
