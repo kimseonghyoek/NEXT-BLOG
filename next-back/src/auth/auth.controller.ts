@@ -32,4 +32,9 @@ export class AuthController {
       return res.status(403).send('have_user');
     }
   }
+
+  @Post('/signin')
+  async signin() {
+    console.log('login');
+  }
 }
