@@ -19,6 +19,7 @@ const LoginForm = () => {
   const [userPw, setPw] = useRecoilState(pw);
   const [rePw, setRePw] = useState("");
   const [checked, setCheck] = useState(false);
+  const [email_check, setCheckEmail] = useState(false);
 
   const onChangeName = (e) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ const LoginForm = () => {
 
   const onChangeEmail = (e) => {
     e.preventDefault();
+    setCheckEmail(false);
     setEmail(e.target.value);
   };
 
@@ -67,29 +69,16 @@ const LoginForm = () => {
       post = false;
     }
 
-    alert("로그인");
-  };
-
-  // 이메일 중복 체크
-  const checkDuplicateCheck = (e) => {
-    e.preventDefault();
-
-    alert("이메일 체크");
-
-    if (userEmail === "") {
-      return alert("이메일이 빈 칸 입니다.");
+    if(post === true) {
+      axios.post(`http://localhost:8000/auth/signin`, {
+        body: {
+          email: userEmail,
+          pw: userPw,
+        }
+      })
     }
 
-    axios({
-      url: "localhost:8000/auth/email-check",
-      method: "get",
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    alert("로그인");
   };
 
   const submit = (e) => {
@@ -108,7 +97,7 @@ const LoginForm = () => {
     if (userBirth === "") {
       post = false;
       alert("생일이 빈 칸 입니다.");
-    } else if (userBirth.length < 1 || userBirth.length >= 9) {
+    } else if (userBirth.length !== 8) {
       post = false;
       alert("날짜 형식이 잘 못 되었습니다.");
     }
@@ -135,12 +124,15 @@ const LoginForm = () => {
         })  
         .then((res) => {
           if(res.status === 200) {
-            alert('계정 가입이 완료 되었습니다.')
+            alert('계정 가입이 완료 되었습니다.');
+            setEmail("");
+            setPw("");
+            location.push({pathname: '/auth/signin'});
           }
         })
         .catch((err) => {
           if(err.response.data === 'have_user') {
-            alert('실패')
+            setCheckEmail(true);
           }
         });
     }
@@ -165,7 +157,9 @@ const LoginForm = () => {
           ) : null}
           <div className={styles.emails}>
             <input placeholder="Your Email" onChange={onChangeEmail} />
-            {<InputCheck notice={`이미 사용중인 이메일입니다.`} />}
+            {
+              email_check ? <InputCheck notice={`이미 사용중인 이메일입니다.`} /> : null
+            }
           </div>
           <input
             placeholder="Your Password"
