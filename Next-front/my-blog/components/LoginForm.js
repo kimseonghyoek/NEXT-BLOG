@@ -75,10 +75,14 @@ const LoginForm = () => {
           email: userEmail,
           pw: userPw,
         }
+      }).then((res) => {
+        if(res.status === 200) {
+          location.push({ pathname: '/'});
+        } else {
+          alert('비번 틀림');
+        }
       })
     }
-
-    alert("로그인");
   };
 
   const submit = (e) => {
