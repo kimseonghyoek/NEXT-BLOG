@@ -34,7 +34,16 @@ export class AuthController {
   }
 
   @Post('/signin')
-  async signin() {
-    console.log('login');
+  async signin(@Body() data, @Res() res) {
+    const userdata = await this.authService.signIn(data);
+    const email = await this.authService.checkEmail(data.body.email);
+    if (email === null) {
+      console.log('존재하지 않는 이메일입니다.');
+    } else if (email.email !== userdata.email) {
+      console.log('이메일이 매치하지 않습니다.');
+    } else if (email.email === userdata.email) {
+      // 이메일 같음
+      console.log('이메일 매치 완료');
+    }
   }
 }

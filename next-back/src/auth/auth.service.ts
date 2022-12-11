@@ -37,4 +37,14 @@ export class AuthService {
     user.pw = await bcrypt.hash(password, salt);
     await this.userRepository.save(user);
   }
+
+  public async signIn(body) {
+    const user = new User();
+    user.email = body.body.email;
+    user.pw = body.body.pw;
+    console.log(user.email);
+    console.log(user.pw);
+
+    return user;
+  }
 }
