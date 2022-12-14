@@ -88,6 +88,10 @@ const LoginForm = () => {
   const submit = (e) => {
     e.preventDefault();
 
+    
+    console.log(userEmail);
+
+
     if (userName === "User") {
       alert("닉네임이 빈 칸 입니다.");
       post = false;
@@ -119,12 +123,10 @@ const LoginForm = () => {
     if (post === true) {
       axios
         .post(`http://localhost:8000/auth/signup`, {
-          body: {
-            email: userEmail,
-            birth: userBirth,
-            nickname: userName,
-            pw: userPw,
-          },
+            userEmail,
+            userName,
+            userBirth,
+            userPw,
         })  
         .then((res) => {
           if(res.status === 200) {
