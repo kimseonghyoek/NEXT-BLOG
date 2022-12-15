@@ -3,13 +3,11 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { User } from "src/entities/user.entity";
 import { Repository } from "typeorm";
 import * as bcrypt from "bcrypt";
-import e, { Response, response } from "express";
 import {
   InternalServerErrorException,
   UnauthorizedException,
 } from "@nestjs/common/exceptions";
 import { CreateUserDto } from "./dto/create-user.dto";
-// import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -60,11 +58,18 @@ export class AuthService {
     }
   }
 
-  // public async signIn(body) {
-  //   const user = new User();
-  //   const email = await this.checkEmail(body.body.email);
-  //   const user_email = body.body.email;
+  public async login(email: string, pw: string) {
+    const user = await this.userRepository.findOne({
+      where: { email: email },
+    });
 
-  //   return user;
-  // }
+    if (user) {
+      const match = await bcrypt.compare(pw, user.pw);
+      if (match) {
+        console.log(match);
+      } else {
+        throw new UnauthorizedException("fail_login");
+      }
+    }
+  }
 }
