@@ -71,5 +71,7 @@ export class AuthService {
         throw new UnauthorizedException("fail_login");
       }
     }
+
+    return user;
   }
 }

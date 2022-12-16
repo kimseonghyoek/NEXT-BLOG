@@ -4,6 +4,8 @@ import { Response } from "express";
 import { AuthService } from "./auth.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import * as bcrypt from "bcrypt";
+import { Request, UseGuards } from "@nestjs/common/decorators";
+import { AuthGuard } from "@nestjs/passport";
 
 @Controller("auth")
 export class AuthController {
@@ -26,8 +28,11 @@ export class AuthController {
     return await this.authService.createUser(createUserDto);
   }
 
+  @UseGuards(AuthGuard("local"))
   @Post("/signin")
-  async signin(@Body() data) {
-    return await this.authService.login(data.userEmail, data.userPw);
+  async signin(@Body() data, @Request() req) {
+    await this.authService.login(data.userEmail, data.userPw);
+    console.log(req);
+    return req.user;
   }
 }
