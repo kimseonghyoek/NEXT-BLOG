@@ -19,7 +19,6 @@ const LoginForm = () => {
   const [userPw, setPw] = useRecoilState(pw);
   const [rePw, setRePw] = useState("");
   const [checked, setCheck] = useState(false);
-  const [email_check, setCheckEmail] = useState(false);
 
   const onChangeName = (e) => {
     e.preventDefault();
@@ -33,7 +32,6 @@ const LoginForm = () => {
 
   const onChangeEmail = (e) => {
     e.preventDefault();
-    setCheckEmail(false);
     setEmail(e.target.value);
   };
 
@@ -69,28 +67,30 @@ const LoginForm = () => {
       post = false;
     }
 
-    if(post === true) {
-      axios.post(`http://localhost:8000/auth/signin`, {
-        body: {
-          email: userEmail,
-          pw: userPw,
-        }
-      }).then((res) => {
-        if(res.status === 200) {
-          location.push({ pathname: '/'});
-        } else {
-          alert('비번 틀림');
-        }
-      })
+    if (post === true) {
+      axios
+        .post(`http://localhost:8000/auth/signin`, {
+          userEmail,
+          userPw,
+        })
+        .then((res) => {
+          if (res.status === 201) {
+            location.push({ pathname: "/" });
+          }
+        })
+        .catch((err) => {
+          if (err.response.data.message === "NOT_FOUND_EMAIL") {
+            alert("없는 이메일이거나 틀린 이메일입니다.");
+          }
+          if (err.response.data.message === "NOT_MATCH_PW") {
+            alert("비밀번호가 틀렸습니다"); 
+          }
+        });
     }
   };
 
   const submit = (e) => {
     e.preventDefault();
-
-    
-    console.log(userEmail);
-
 
     if (userName === "User") {
       alert("닉네임이 빈 칸 입니다.");
@@ -123,22 +123,25 @@ const LoginForm = () => {
     if (post === true) {
       axios
         .post(`http://localhost:8000/auth/signup`, {
-            userEmail,
-            userName,
-            userBirth,
-            userPw,
-        })  
+          userEmail,
+          userName,
+          userBirth,
+          userPw,
+        })
         .then((res) => {
-          if(res.status === 200) {
-            alert('계정 가입이 완료 되었습니다.');
+          if (res.status === 201) {
+            alert("계정 가입이 완료 되었습니다.");
             setEmail("");
             setPw("");
-            location.push({pathname: '/auth/signin'});
+            location.push({ pathname: "/auth/signin" });
           }
         })
         .catch((err) => {
-          if(err.response.data === 'have_user') {
-            setCheckEmail(true);
+          if (err.response.data.message === "USE_THIS_EMAIL") {
+            alert("사용중인 이메일 입니다.");
+          } 
+          if (err.response.data.message === "USE_THIS_NICKNAME") {
+            alert("사용중인 닉네임 입니다.");
           }
         });
     }
@@ -163,9 +166,6 @@ const LoginForm = () => {
           ) : null}
           <div className={styles.emails}>
             <input placeholder="Your Email" onChange={onChangeEmail} />
-            {
-              email_check ? <InputCheck notice={`이미 사용중인 이메일입니다.`} /> : null
-            }
           </div>
           <input
             placeholder="Your Password"
