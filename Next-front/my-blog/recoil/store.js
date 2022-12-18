@@ -44,3 +44,8 @@ export const show_item = atom({
   key: 'show_item',
   default: true,
 })
+
+export const check_input = atom({
+  key: 'check_input',
+  default: ''
+})
