@@ -2,14 +2,19 @@ import { Body, Controller, Res } from "@nestjs/common";
 import { Get, Post } from "@nestjs/common";
 import { Response } from "express";
 import { AuthService } from "./auth.service";
-import { CreateUserDto } from "./dto/create-user.dto";
+import { CreateUserDto } from "../user/dto/create-user.dto";
 import * as bcrypt from "bcrypt";
-import { Request, UseGuards } from "@nestjs/common/decorators";
+import { HttpCode, Request, UseGuards } from "@nestjs/common/decorators";
 import { AuthGuard } from "@nestjs/passport";
+import { UserService } from "src/user/user.service";
+import { LocalAuthenicationGuard } from "./local/localauthenication.guard";
 
 @Controller("auth")
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
   @Get()
   test() {
@@ -25,14 +30,14 @@ export class AuthController {
 
   @Post("/signup")
   async signup(@Body() createUserDto: CreateUserDto) {
-    return await this.authService.createUser(createUserDto);
+    return await this.userService.createUser(createUserDto);
   }
 
-  @UseGuards(AuthGuard("local"))
+  @HttpCode(200)
+  // @UseGuards(LocalAuthenicationGuard)
   @Post("/signin")
   async signin(@Body() data, @Request() req) {
-    await this.authService.login(data.userEmail, data.userPw);
-    console.log(req);
-    return req.user;
+    await this.authService.validateLogin(data.userEmail, data.userPw);
+    return req.body;
   }
 }
