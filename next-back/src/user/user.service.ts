@@ -21,7 +21,7 @@ export class UserService {
     });
 
     if (use_email) {
-      throw new UnauthorizedException("use_this_email");
+      throw new UnauthorizedException("USE_THIS_EMAIL");
     }
   }
 
@@ -31,7 +31,7 @@ export class UserService {
     });
 
     if (use_name) {
-      throw new UnauthorizedException("use_this_nickname");
+      throw new UnauthorizedException("USE_THIS_NICKNAME");
     }
   }
 
@@ -42,8 +42,8 @@ export class UserService {
   public async createUser(createUserDto: CreateUserDto) {
     const { userEmail, userBirth, userName, userPw } = createUserDto;
 
-    await this.checkEmail(userEmail);
     await this.checkName(userName);
+    await this.checkEmail(userEmail);
     const password = await bcrypt.hash(userPw, 12);
 
     try {

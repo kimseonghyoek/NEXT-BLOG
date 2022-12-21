@@ -16,4 +16,7 @@ export class User {
 
   @Column("varchar", { name: "nickname", length: 30 })
   nickname: string;
+
+  @Column("tinyint", { name: "superAdmin", nullable: true })
+  superAdmin: number;
 }

@@ -8,7 +8,9 @@ import { AuthService } from "./auth/auth.service";
 import { AuthModule } from "./auth/auth.module";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
-import { LocalStrategy } from "./auth/local/local.strategy";
+import { LocalStrategy } from "./auth/local.strategy";
+import { UserService } from "./user/user.service";
+import { UserModule } from "./user/user.module";
 
 @Module({
   imports: [
@@ -23,14 +25,11 @@ import { LocalStrategy } from "./auth/local/local.strategy";
       synchronize: true,
     }),
     TypeOrmModule.forFeature([User]),
-    JwtModule.register({
-      secret: "SECRET",
-      signOptions: { expiresIn: "300s" },
-    }),
     AuthModule,
+    UserModule,
     PassportModule,
   ],
   controllers: [AppController, AuthController],
-  providers: [App, AuthService, LocalStrategy],
+  providers: [App, AuthService, UserService, LocalStrategy],
 })
 export class AppModule {}
