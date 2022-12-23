@@ -34,10 +34,12 @@ export class AuthController {
   }
 
   @HttpCode(200)
-  // @UseGuards(LocalAuthenicationGuard)
+  @UseGuards(LocalAuthenicationGuard)
   @Post("/signin")
+  // Request는 user 객체로 날라옴.
   async signin(@Body() data, @Request() req) {
     await this.authService.validateLogin(data.userEmail, data.userPw);
-    return req.body;
+    console.log(JSON.parse(JSON.stringify(req.user)));
+    return this.authService.issuedToken(req.user);
   }
 }
