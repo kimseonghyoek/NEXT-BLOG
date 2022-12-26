@@ -1,21 +1,15 @@
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
-import { Strategy } from "passport-jwt";
-
-const fromAuthCookie = function () {
-  return function (request) {
-    let token = null;
-    if (request && request.cookies) {
-      token = request.cookies["Authorization"];
-    }
-    return token;
-  };
-};
+import { ExtractJwt, Strategy } from "passport-jwt";
 
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly config: ConfigService) {
     super({
-      jwtFromRequest: fromAuthCookie,
+      jwtFromRequest: ExtractJwt.fromExtractors([
+        (request) => {
+          return request?.cookies?.Authorization;
+        },
+      ]),
       ignoreExpiration: false,
       secretOrKey: "jwt secret key",
     });

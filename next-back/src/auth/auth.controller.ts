@@ -1,13 +1,11 @@
-import { Body, Controller, Res } from "@nestjs/common";
+import { Body, Controller } from "@nestjs/common";
 import { Get, Post } from "@nestjs/common";
-import { Response } from "express";
 import { AuthService } from "./auth.service";
 import { CreateUserDto } from "../user/dto/create-user.dto";
-import * as bcrypt from "bcrypt";
-import { HttpCode, Request, UseGuards } from "@nestjs/common/decorators";
-import { AuthGuard } from "@nestjs/passport";
+import { HttpCode, Request, Res, UseGuards } from "@nestjs/common/decorators";
 import { UserService } from "src/user/user.service";
 import { LocalAuthenicationGuard } from "./local/localauthenication.guard";
+import { Response } from "express";
 
 @Controller("auth")
 export class AuthController {
@@ -37,9 +35,25 @@ export class AuthController {
   @UseGuards(LocalAuthenicationGuard)
   @Post("/signin")
   // Request는 user 객체로 날라옴.
-  async signin(@Body() data, @Request() req) {
+  async signin(
+    @Body() data,
+    @Request() req,
+    @Res({ passthrough: true }) res: Response
+  ) {
     await this.authService.validateLogin(data.userEmail, data.userPw);
-    console.log(JSON.parse(JSON.stringify(req.user)));
-    return this.authService.issuedToken(req.user);
+    // console.log(JSON.parse(JSON.stringify(req.user)));
+    const access_token = await (
+      await this.authService.issuedToken(req.user)
+    ).access_token;
+    res.cookie("Authorization", access_token, {
+      domain: "localhost",
+      path: "/",
+      httpOnly: true,
+      maxAge: 60 * 60 * 24,
+    });
+    res.send({
+      message: "success",
+    });
+    // return access_token;
   }
 }
