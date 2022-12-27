@@ -29,6 +29,7 @@
     "@nestjs/mapped-types": "^1.2.0",
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.1.4",
     "@types/bcrypt": "^5.0.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
@@ -49,7 +50,8 @@
     "react-dom": "^18.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "swagger-ui": "^4.15.5"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
