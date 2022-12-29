@@ -8,9 +8,10 @@ import { AuthService } from "./auth/auth.service";
 import { AuthModule } from "./auth/auth.module";
 import { JwtModule } from "@nestjs/jwt";
 import { PassportModule } from "@nestjs/passport";
-import { LocalStrategy } from "./auth/local.strategy";
+import { LocalStrategy } from "./auth/local/local.strategy";
 import { UserService } from "./user/user.service";
 import { UserModule } from "./user/user.module";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { UserModule } from "./user/user.module";
     AuthModule,
     UserModule,
     PassportModule,
+    ConfigModule.forRoot(),
   ],
   controllers: [AppController, AuthController],
   providers: [App, AuthService, UserService, LocalStrategy],
